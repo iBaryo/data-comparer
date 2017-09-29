@@ -1,0 +1,16 @@
+{
+  "name": "data-comparer",
+  "version": "1.0.0",
+  "description": "comparing data structure between different systems",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc src/Comparer.ts --target es2016",
+    "prepublish": "npm run build",
+    "start" : "tsc --target es2016 index.ts --module commonjs && node index.js"
+  },
+  "author": "Or Bar Yosef",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^2.5.3"
+  }
+}
