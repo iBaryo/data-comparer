@@ -1,7 +1,7 @@
 import {compareSysData} from "../src/compareSysData";
 import {SysMock} from "./SysMock";
-import {SystemQuery, QueryError, QueryResult} from "../src/QueryInterfaces";
-import {CompareFn, CompareInfo} from "../src/CompareInterfaces";
+import {QueryError, QueryResult} from "../src/QueryInterfaces";
+import {CompareInfo} from "../src/CompareInterfaces";
 import Spy = jasmine.Spy;
 
 require('jasmine-co').install();
