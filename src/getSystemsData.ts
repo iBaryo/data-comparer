@@ -10,15 +10,6 @@ export interface QueryResult<T extends System, D> {
     errors: Map<T, QueryError>
 }
 
-export class MultiQuery<T extends System> {
-    constructor(protected _systems: T[]) {
-    }
-
-    public getSysData<D>(query: SystemQuery<T,D>) {
-        return getSystemsData<T, D>(this._systems, query);
-    }
-}
-
 export async function getSystemsData<T extends System, D>(systems: T[], query: SystemQuery<T, D>) {
     const res = {
         datas: new Map<T, D>(),

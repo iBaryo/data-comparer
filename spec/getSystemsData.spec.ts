@@ -1,4 +1,4 @@
-import {getSystemsData} from "../src/MultiQuery";
+import {getSystemsData} from "../src/getSystemsData";
 import {SysMock} from "./SysMock";
 
 require('jasmine-co').install();

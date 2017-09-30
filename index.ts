@@ -1,1 +1,1 @@
-export {compareSysData} from "./src/Comparer";
+export {compareSysData} from "./src/compareSysData";
