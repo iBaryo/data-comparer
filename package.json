@@ -4,10 +4,10 @@
   "description": "comparing data structure between different systems",
   "main": "index.js",
   "scripts": {
-    "build": "tsc src/Comparer.ts --target es2016",
+    "build": "tsc example.ts --target es2016 --module commonjs --sourcemap",
     "prepublish": "npm run build",
-    "start": "tsc example.ts && node example.js",
-    "test": "jasmine-ts \"spec/*spec.ts\""
+    "start": "ts-node example.ts",
+    "test": "npm run build && jasmine-ts \"spec/*spec.ts\""
   },
   "author": "Or Bar Yosef",
   "license": "MIT",

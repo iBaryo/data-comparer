@@ -1,4 +1,5 @@
-export class SysMock {
+import {System} from "../src/Common";
+export class SysMock implements System{
     constructor(public result: any, public shouldThrow = false) {
     }
 

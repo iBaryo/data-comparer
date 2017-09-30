@@ -1,22 +1,26 @@
-import {MultiQuery, SystemQuery, getSystemsData} from "./getSystemsData";
+import {getSystemsData} from "./getSystemsData";
 import {CompareStrategies, CompareStrategy, CompareStrategyFn} from "./CompareStrategies";
 import {System} from "./Common";
 import {CompareFn} from "./CompareInterfaces";
+import {QueryResult, SystemQuery} from "./QueryInterfaces";
 
 export async function compareSysData<T extends System, D>(systems: T[],
                                                           query: SystemQuery<T,D>,
                                                           compare: CompareFn<D>,
                                                           compareStrategy: CompareStrategy | CompareStrategyFn<T,D>,
-                                                          _getSystemsData = getSystemsData) {
+                                                          _getSystemsData: (systems: T[], query: SystemQuery<T, D>) => Promise<QueryResult<T, D>> = getSystemsData) {
+
 
     if (!systems || systems.length < 2)
         throw 'no systems to compare';
 
-    const queryRes = await _getSystemsData<T,D>(systems, query);
-
-    if (typeof compareStrategy == 'string') {
+    if (typeof compareStrategy == 'string')
         compareStrategy = CompareStrategies[compareStrategy] as CompareStrategyFn<T,D>;
-    }
+
+    if (!compareStrategy)
+        throw 'missing compare strategy';
+
+    const queryRes = await _getSystemsData(systems, query);
 
     const compareRes = compareStrategy(queryRes.datas, compare);
 

@@ -1,14 +1,5 @@
-import {System, isPromise, MaybePromise} from "./Common";
-
-export type SystemQuery<T, D> =  (sys: T) => MaybePromise<D>;
-
-export interface QueryError {
-}
-
-export interface QueryResult<T extends System, D> {
-    datas: Map<T, D>,
-    errors: Map<T, QueryError>
-}
+import {System, isPromise } from "./Common";
+import {SystemQuery, QueryError, QueryResult} from "./QueryInterfaces";
 
 export async function getSystemsData<T extends System, D>(systems: T[], query: SystemQuery<T, D>) {
     const res = {
