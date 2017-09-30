@@ -1,5 +1,6 @@
-import {System, isPromise} from "./Common";
-export type SystemQuery<T, D> =  (sys: T) => D|Promise<D>;
+import {System, isPromise, MaybePromise} from "./Common";
+
+export type SystemQuery<T, D> =  (sys: T) => MaybePromise<D>;
 
 export interface QueryError {
 }
