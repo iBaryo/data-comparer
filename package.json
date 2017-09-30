@@ -6,11 +6,16 @@
   "scripts": {
     "build": "tsc src/Comparer.ts --target es2016",
     "prepublish": "npm run build",
-    "start" : "tsc --target es2016 index.ts --module commonjs && node index.js"
+    "start": "tsc example.ts && node example.js",
+    "test": "jasmine-ts \"spec/*spec.ts\""
   },
   "author": "Or Bar Yosef",
   "license": "MIT",
   "devDependencies": {
+    "@types/jasmine": "^2.6.0",
+    "@types/node": "^8.0.31",
+    "jasmine-co": "^1.2.2",
+    "jasmine-ts": "^0.2.1",
     "typescript": "^2.5.3"
   }
 }
