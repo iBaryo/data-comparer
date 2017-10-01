@@ -64,6 +64,22 @@ console.log(`~~~ Example ~~~`);
 })();
 ```
 
+###Compare Strategies
+* linear: sys1 with sys2, sys2 with sys3, sys3 with sys4, etc.
+* mesh: each system with each other system.
+* or just send a custom function from type:
+```typescript
+export type CompareStrategyFn<T extends System, D> = (datas: Map<T, D>, compare: CompareFn<D>) => CompareInfo<T>[];
+export interface CompareInfo<T extends System> {
+    sys1 : T,
+    sys2 : T,
+    result : CompareResult|Promise<CompareResult>
+}
+export interface CompareResult {
+    success: boolean;
+}
+```
+
 ##Running the example
 After cloning the repo',
 ```
