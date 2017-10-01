@@ -14,6 +14,7 @@
   "devDependencies": {
     "@types/jasmine": "^2.6.0",
     "@types/node": "^8.0.31",
+    "factorial": "^1.0.0",
     "jasmine-co": "^1.2.2",
     "jasmine-ts": "^0.2.1",
     "typescript": "^2.5.3"
