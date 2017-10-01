@@ -1,9 +1,9 @@
-import {getSystemsData} from "../src/getSystemsData";
+import {getSysData} from "../src/getSysData";
 import {SysMock} from "./SysMock";
 
 require('jasmine-co').install();
 
-describe('getSystemsData', () => {
+describe('getSysData', () => {
     let mockResults : Array<any>;
 
     beforeEach(() => {
@@ -11,7 +11,7 @@ describe('getSystemsData', () => {
     });
 
     it('should return empty data and error maps when there are no systems', async() => {
-        const res = await getSystemsData<SysMock, any>([], sys => sys.getVal());
+        const res = await getSysData<SysMock, any>([], sys => sys.getVal());
         expect(res.datas).toEqual(jasmine.any(Map));
         expect(res.datas.size).toBe(0);
         expect(res.errors).toEqual(jasmine.any(Map));
@@ -20,7 +20,7 @@ describe('getSystemsData', () => {
 
     it(`should return the system's result`, async() => {
         const mockSys = new SysMock(mockResults[0]);
-        const res = await getSystemsData<SysMock, any>(
+        const res = await getSysData<SysMock, any>(
             [mockSys],
             sys => sys.getVal()
         );
@@ -32,7 +32,7 @@ describe('getSystemsData', () => {
 
     it(`should return the system's async result`, async() => {
         const mockSys = new SysMock(mockResults[0]);
-        const res = await getSystemsData<SysMock, any>(
+        const res = await getSysData<SysMock, any>(
             [mockSys],
             sys => sys.getValAsync()
         );
@@ -44,7 +44,7 @@ describe('getSystemsData', () => {
 
     it(`should return different systems' results`, async() => {
         const mockSystems = mockResults.map(res => new SysMock(res));
-        const res = await getSystemsData<SysMock, any>(
+        const res = await getSysData<SysMock, any>(
             mockSystems,
             sys => sys.getVal()
         );
@@ -63,7 +63,7 @@ describe('getSystemsData', () => {
 
     it('should save system error', async() => {
         const mockSys = new SysMock(mockResults[0], true);
-        const res = await getSystemsData<SysMock, any>(
+        const res = await getSysData<SysMock, any>(
             [mockSys],
             sys => sys.getVal()
         );
@@ -75,7 +75,7 @@ describe('getSystemsData', () => {
 
     it('should save async system error', async() => {
         const mockSys = new SysMock(mockResults[0], true);
-        const res = await getSystemsData<SysMock, any>(
+        const res = await getSysData<SysMock, any>(
             [mockSys],
             sys => sys.getValAsync()
         );
@@ -87,7 +87,7 @@ describe('getSystemsData', () => {
 
     it(`should return different systems' errors`, async() => {
         const mockSystems = mockResults.map(res => new SysMock(res, true));
-        const res = await getSystemsData<SysMock, any>(
+        const res = await getSysData<SysMock, any>(
             mockSystems,
             sys => sys.getVal()
         );
@@ -106,7 +106,7 @@ describe('getSystemsData', () => {
 
     it(`should return different systems' errors and data`, async() => {
         const mockSystems = mockResults.map((res, i) => new SysMock(res, i % 2 != 0));
-        const res = await getSystemsData<SysMock, any>(
+        const res = await getSysData<SysMock, any>(
             mockSystems,
             sys => sys.getVal()
         );

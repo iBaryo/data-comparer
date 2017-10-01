@@ -1,7 +1,7 @@
 import {System, isPromise } from "./Common";
 import {SystemQuery, QueryError, QueryResult} from "./QueryInterfaces";
 
-export async function getSystemsData<T extends System, D>(systems: T[], query: SystemQuery<T, D>) {
+export async function getSysData<T extends System, D>(systems: T[], query: SystemQuery<T, D>) {
     const res = {
         datas: new Map<T, D>(),
         errors: new Map<T, QueryError>()
