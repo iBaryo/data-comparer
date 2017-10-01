@@ -8,7 +8,7 @@ npm i data-comparer
 
 ## Usage
 ```typescript
-import {compareSysData, Validator} from "./index";
+import {compareSysData, Validator} from "data-comparer";
 
 // Lets say we have a class to wrap my system's api, customizable to different environments
 class MySys {
