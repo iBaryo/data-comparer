@@ -2,6 +2,7 @@
 node_modules/
 spec/
 **/*.ts
+!**/*.d.ts
 **/*.js.map
 example.*
 tsconfig.json
