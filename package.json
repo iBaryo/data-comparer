@@ -4,7 +4,7 @@
   "description": "comparing data structure between different systems",
   "main": "index.js",
   "scripts": {
-    "build": "tsc example.ts --target es2016 --module commonjs --sourcemap",
+    "build": "tsc example.ts --target es2016 --module commonjs --sourcemap --declaration",
     "prepublish": "npm run build",
     "start": "ts-node example.ts",
     "test": "npm run build && jasmine-ts \"spec/*spec.ts\""

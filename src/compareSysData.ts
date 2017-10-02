@@ -1,14 +1,19 @@
 import {getSysData} from "./getSysData";
 import {CompareStrategies, CompareStrategy, CompareStrategyFn} from "./CompareStrategies";
 import {System} from "./Common";
-import {CompareFn} from "./CompareInterfaces";
-import {QueryResult, SystemQuery} from "./QueryInterfaces";
+import {CompareFn, CompareInfo} from "./CompareInterfaces";
+import {QueryResult, SystemQuery, QueryError} from "./QueryInterfaces";
+
+export interface SystemsCompareResult<T extends System> {
+    results : CompareInfo<T>[],
+    queryErrors: Map<T, QueryError>
+}
 
 export async function compareSysData<T extends System, D>(systems: T[],
                                                           query: SystemQuery<T,D>,
                                                           compare: CompareFn<D>,
                                                           compareStrategy: CompareStrategy | CompareStrategyFn<T,D>,
-                                                          _getSystemsData: (systems: T[], query: SystemQuery<T, D>) => Promise<QueryResult<T, D>> = getSysData) {
+                                                          _getSystemsData: (systems: T[], query: SystemQuery<T, D>) => Promise<QueryResult<T, D>> = getSysData) : Promise<SystemsCompareResult<T>> {
 
 
     if (!systems || systems.length < 2)
